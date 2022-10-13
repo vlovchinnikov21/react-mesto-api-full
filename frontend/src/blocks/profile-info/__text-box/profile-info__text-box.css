@@ -1,0 +1,10 @@
+.profile-info__text-box {
+    margin: 0 auto;
+    max-width: 282px;
+}
+
+@media screen and (min-width: 767px) {
+    .profile-info__text-box {
+        max-width: 336px;
+    }
+}

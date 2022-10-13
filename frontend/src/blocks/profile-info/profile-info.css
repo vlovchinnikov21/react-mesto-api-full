@@ -1,0 +1,11 @@
+.profile-info {
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+}
+
+@media screen and (min-width: 767px) {
+    .profile-info {
+        flex-direction: row;
+    }
+}

@@ -1,0 +1,12 @@
+.profile-info__name-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-top: 26px;
+}
+
+@media screen and (min-width: 767px) {
+    .profile-info__name-box {
+        padding-top: 22px;
+    }
+}

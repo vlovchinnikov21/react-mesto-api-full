@@ -1,0 +1,23 @@
+.auth-page__btn {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.2;
+  text-align: center;
+  color: #000000;
+  border: none;
+  outline: none;
+  padding: 14px 0;
+  background: #ffffff;
+  border-radius: 2px;
+  transition: 0.2s;
+  width: 100%;
+  margin-top: 216px;
+  margin-bottom: 15px;
+}
+
+.auth-page__btn:hover {
+  opacity: 0.85;
+  cursor: pointer;
+}

@@ -1,0 +1,16 @@
+.header__link {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.2;
+  color: #ffffff;
+  text-decoration: none;
+  transition: .2s;
+  align-items: center;
+}
+
+.header__link:hover {
+    cursor: pointer;
+    opacity: .6;
+}

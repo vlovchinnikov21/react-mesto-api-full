@@ -1,0 +1,7 @@
+.popup__input_type_login {
+  background: transparent;
+  border-bottom: 2px solid #cccccc;
+  font-size: 14px;
+  line-height: 1.2;
+  color: #cccccc;
+}
