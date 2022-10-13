@@ -1,4 +1,4 @@
-export const BASE_URL = 'https://auth.nomoreparties.co';
+export const BASE_URL = 'https://api.mesto.vlovchinnikov21.nomoredomains.icu';
 
 const handleResponse = (response) =>
   response.ok ? response.json() : Promise.reject(`Ошибка ${response.status}`);
