@@ -81,9 +81,9 @@ function App() {
     tokenCheck();
   }, []);
 
-  function tokenCheck() {
+  function tokenCheck(token) {
       auth
-        .getContent()
+        .getContent(token)
         .then((res) => {
           if (res) {
             setLoggedIn(true);
