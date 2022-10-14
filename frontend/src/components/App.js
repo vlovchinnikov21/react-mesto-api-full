@@ -183,7 +183,7 @@ function App() {
     auth
       .register(password, email)
       .then((res) => {
-        setEmail(res.data.email);
+        setEmail(res.email);
         setMessage({ imgPath: accept, text: 'Вы успешно зарегистрировались!' });
       })
       .catch(() =>
