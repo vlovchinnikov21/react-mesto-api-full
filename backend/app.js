@@ -16,6 +16,36 @@ const { PORT = 3000 } = process.env;
 
 const app = express();
 
+const allowedCors = [
+  'https://mesto.vlovchinnikov21.nomoredomains.icu',
+  'https://api.mesto.vlovchinnikov21.nomoredomains.icu',
+  'localhost:3000',
+];
+
+// eslint-disable-next-line consistent-return
+app.use((req, res, next) => {
+  const { origin } = req.headers;
+  const { method } = req;
+
+  const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
+
+  const requestHeaders = req.headers['access-control-request-headers'];
+
+  if (allowedCors.includes(origin)) {
+    res.header('Access-Control-Allow-Origin', origin);
+    res.header('Access-Control-Allow-Credentials', 'true');
+  }
+
+  if (method === 'OPTIONS') {
+    res.header('Access-Control-Allow-Methods', DEFAULT_ALLOWED_METHODS);
+    res.header('Access-Control-Allow-Headers', requestHeaders);
+
+    return res.status(200).send();
+  }
+
+  next();
+});
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
