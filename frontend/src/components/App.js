@@ -81,11 +81,8 @@ function App() {
   }, []);
 
   function tokenCheck() {
-    const jwt = localStorage.getItem('jwt');
-
-    if (jwt) {
       auth
-        .getContent(jwt)
+        .getContent()
         .then((res) => {
           if (res) {
             setLoggedIn(true);
@@ -94,15 +91,14 @@ function App() {
           }
         })
         .catch((err) => console.log(err));
-    }
   }
 
   function handleCardLike(card) {
-    const isLiked = card.likes.some((i) => i._id === currentUser._id);
+    const isLiked = card.likes.some(id => id === currentUser._id);
 
     api.changeLikeCardStatus(card._id, !isLiked).then((newCard) => {
       setCards((state) =>
-        state.map((c) => (c._id === card._id ? newCard : c))
+        state.map((c) => (c._id === card._id ? newCard.data : c))
       ).catch((err) => console.log(err));
     });
   }
@@ -116,21 +112,21 @@ function App() {
       .catch((err) => console.log(err));
   }
 
-  function handleUpdateUser(items) {
+  function handleUpdateUser(userData) {
     api
-      .setUserProfile(items)
-      .then((item) => {
-        setCurrentUser(item);
+      .setUserProfile(userData)
+      .then((user) => {
+        setCurrentUser(user.data);
         closeAllPopups();
       })
       .catch((err) => console.log(err));
   }
 
-  function handleUpdateAvatar(items) {
+  function handleUpdateAvatar(avatarData) {
     api
-      .editUserAvatar(items)
-      .then((item) => {
-        setCurrentUser(item);
+      .editUserAvatar(avatarData)
+      .then((user) => {
+        setCurrentUser(user.data);
         closeAllPopups();
       })
       .catch((err) => console.log(err));
@@ -140,7 +136,7 @@ function App() {
     api
       .addUserCard(items)
       .then((newCard) => {
-        setCards([newCard, ...cards]);
+        setCards([newCard.data, ...cards]);
         closeAllPopups();
       })
       .catch((err) => console.log(err));
@@ -175,7 +171,7 @@ function App() {
       .authorize(password, email)
       .then((token) => {
         auth.getContent(token).then((res) => {
-          setEmail(res.data.email);
+          setEmail(res.currentUser.email);
           setLoggedIn(true);
           history.push('/');
         });
@@ -203,8 +199,11 @@ function App() {
   }
 
   function onSignOut() {
-    localStorage.removeItem('jwt');
-    setLoggedIn(false);
+    auth.logout()
+    setLoggedIn(false)
+    setCards([])
+    setCurrentUser({})
+    history.push('/sign-in')
   }
 
   return (

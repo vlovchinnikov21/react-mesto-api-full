@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const userRouter = require('./routes/users');
 const cardRouter = require('./routes/cards');
-const { login, createUser } = require('./controllers/users');
+const { login, createUser, logout } = require('./controllers/users');
 const { auth } = require('./middlewars/auth');
 const NotFoundError = require('./error-codes/NotFoundError');
 const { userValidation, loginValidation } = require('./middlewars/validation');
@@ -55,6 +55,7 @@ app.use(requestLogger);
 
 app.post('/signin', loginValidation, login);
 app.post('/signup', userValidation, createUser);
+app.post('/logout', logout);
 
 app.use('/', auth, userRouter);
 app.use('/', auth, cardRouter);

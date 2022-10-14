@@ -3,6 +3,16 @@ export const BASE_URL = 'https://api.mesto.vlovchinnikov21.nomoredomains.icu';
 const handleResponse = (response) =>
   response.ok ? response.json() : Promise.reject(`Ошибка ${response.status}`);
 
+export const logout = () => {
+  return fetch(`${BASE_URL}/logout`, {
+    credentials: 'include',
+    method: 'POST',
+    headers: {
+      "Content-Type": "application/json"
+    }
+  })
+}
+
 export const register = (password, email) => {
   return fetch(`${BASE_URL}/signup`, {
     credentials: 'include',
