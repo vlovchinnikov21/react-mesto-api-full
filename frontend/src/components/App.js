@@ -39,7 +39,7 @@ function App() {
       api
         .getUserProfile()
         .then((items) => {
-          setCurrentUser(items.data);
+          setCurrentUser(items);
         })
         .catch((err) => console.log(err));
     }
