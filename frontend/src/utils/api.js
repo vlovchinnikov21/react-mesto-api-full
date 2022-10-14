@@ -14,6 +14,7 @@ class Api {
 
   getInitialCards() {
     return fetch(this._url + '/cards', {
+      credentials: 'include',
       method: 'GET',
       headers: this._headers,
     }).then(this._checkResponse);
@@ -21,6 +22,7 @@ class Api {
 
   getUserProfile() {
     return fetch(this._url + '/users/me', {
+      credentials: 'include',
       method: 'GET',
       headers: this._headers,
     }).then(this._checkResponse);
@@ -28,6 +30,7 @@ class Api {
 
   setUserProfile(items) {
     return fetch(this._url + '/users/me', {
+      credentials: 'include',
       method: 'PATCH',
       headers: this._headers,
       body: JSON.stringify({
@@ -39,6 +42,7 @@ class Api {
 
   addUserCard(items) {
     return fetch(this._url + '/cards', {
+      credentials: 'include',
       method: 'POST',
       headers: this._headers,
       body: JSON.stringify({
@@ -50,6 +54,7 @@ class Api {
 
   changeLikeCardStatus(id, isLiked) {
     return fetch(this._url + `/cards/${id}/likes`, {
+      credentials: 'include',
       method: `${isLiked ? 'PUT' : 'DELETE'}`,
       headers: this._headers,
     }).then(this._checkResponse);
@@ -57,6 +62,7 @@ class Api {
 
   delete(id) {
     return fetch(this._url + `/cards/${id}`, {
+      credentials: 'include',
       method: 'DELETE',
       headers: this._headers,
     }).then(this._checkResponse);
@@ -64,6 +70,7 @@ class Api {
 
   editUserAvatar(items) {
     return fetch(this._url + '/users/me/avatar', {
+      credentials: 'include',
       method: 'PATCH',
       headers: this._headers,
       body: JSON.stringify({
@@ -79,6 +86,7 @@ class Api {
 
 const api = new Api({
   url: 'https://api.mesto.vlovchinnikov21.nomoredomains.icu',
+  credentials: 'include',
   headers: {
     'Content-Type': 'application/json',
   },
