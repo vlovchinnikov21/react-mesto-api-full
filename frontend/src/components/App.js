@@ -39,7 +39,7 @@ function App() {
       api
         .getUserProfile()
         .then((items) => {
-          setCurrentUser(items);
+          setCurrentUser(items.data);
         })
         .catch((err) => console.log(err));
     }
@@ -50,7 +50,7 @@ function App() {
       api
         .getInitialCards()
         .then((items) => {
-          setCards(items);
+          setCards(items.data);
         })
         .catch((err) => console.log(err));
     }
