@@ -19,6 +19,8 @@ const app = express();
 const allowedCors = [
   'https://mesto.vlovchinnikov21.nomoredomains.icu',
   'https://api.mesto.vlovchinnikov21.nomoredomains.icu',
+  'http://mesto.vlovchinnikov21.nomoredomains.icu',
+  'http://api.mesto.vlovchinnikov21.nomoredomains.icu',
   'localhost:3000',
 ];
 
@@ -52,6 +54,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 app.use(requestLogger);
+
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
 
 app.post('/signin', loginValidation, login);
 app.post('/signup', userValidation, createUser);
