@@ -27,9 +27,7 @@ function App() {
 
   const [isInfoTooltipPopupOpen, setIsInfoTooltipPopupOpen] = useState(false);
   const [message, setMessage] = useState({ imgPath: '', text: '' });
-
-  const token = localStorage.getItem('jwt');
-
+  
   const [isEditProfilePopupOpen, setEditProfilePopupOpen] = useState(false);
   const [isAddPlacePopupOpen, setAddPlacePopupOpen] = useState(false);
   const [isEditAvatarPopupOpen, setEditAvatarPopupOpen] = useState(false);
@@ -80,12 +78,12 @@ function App() {
   }, [isOpen]);
 
   useEffect(() => {
-    tokenCheck(token);
+    tokenCheck();
   }, []);
 
-  function tokenCheck(token) {
+  function tokenCheck() {
       auth
-        .getContent(token)
+        .getContent()
         .then((res) => {
           if (res) {
             setLoggedIn(true);
