@@ -86,7 +86,7 @@ function App() {
         .then((res) => {
           if (res) {
             setLoggedIn(true);
-            setEmail(res.currentUser.email);
+            setEmail(res.email);
             history.push('/');
           }
         })
@@ -171,7 +171,7 @@ function App() {
       .authorize(password, email)
       .then((token) => {
         auth.getContent(token).then((res) => {
-          setEmail(res.currentUser.email);
+          setEmail(res.email);
           setLoggedIn(true);
           history.push('/');
         });
