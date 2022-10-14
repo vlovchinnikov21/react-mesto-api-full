@@ -107,7 +107,7 @@ module.exports.login = (req, res, next) => {
 };
 
 module.exports.logout = (req, res) => {
-  res.clearCookie('jwt').send();
+  res.clearCookie('jwt', { secure: 'true', sameSite: 'none' }).send();
 };
 
 module.exports.getCurrentUser = (req, res, next) => {
