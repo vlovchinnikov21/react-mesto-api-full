@@ -12,7 +12,7 @@ const NotFoundError = require('./error-codes/NotFoundError');
 const { userValidation, loginValidation } = require('./middlewars/validation');
 const { requestLogger, errorLogger } = require('./middlewars/logger');
 
-const { PORT = 3001 } = process.env;
+const { PORT = 3000 } = process.env;
 
 const app = express();
 
