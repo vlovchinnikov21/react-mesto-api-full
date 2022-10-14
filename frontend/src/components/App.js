@@ -98,9 +98,9 @@ function App() {
 
     api.changeLikeCardStatus(card._id, !isLiked).then((newCard) => {
       setCards((state) =>
-        state.map((c) => (c._id === card._id ? newCard.data : c))
-      ).catch((err) => console.log(err));
-    });
+        state.map((c) => (c._id === card._id ? newCard : c))
+      )
+    }).catch((err) => console.log(err));;
   }
 
   function handleCardDelete(card) {
